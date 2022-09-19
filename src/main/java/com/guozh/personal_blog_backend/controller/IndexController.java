@@ -8,14 +8,12 @@ public class IndexController {
 
     @RequestMapping("/")
     public String entrance() {
-        String msg = "hello SpringBoot";
-        return msg;
+        return "hello SpringBoot";
     }
 
     @RequestMapping("/test")
     public String sayHello() {
-        String msg = "hello test url";
-        return msg;
+        return "hello test url";
     }
 
 
