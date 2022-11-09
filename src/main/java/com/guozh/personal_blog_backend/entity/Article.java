@@ -1,6 +1,7 @@
 package com.guozh.personal_blog_backend.entity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Article {
     private Integer id;
@@ -11,11 +12,10 @@ public class Article {
     public Article() {
     }
 
-    public Article(Integer id, String author, String title, Timestamp createTime) {
-        this.id = id;
+    public Article( String author, String title) {
         this.author = author;
         this.title = title;
-        this.createTime = createTime;
+        this.createTime = new Timestamp(System.currentTimeMillis());
     }
 
     public Integer getId() {

@@ -9,4 +9,6 @@ import java.util.List;
 public interface ArticleDao {
 
     List<Article> listAll();
+
+    boolean addArticle(Article article);
 }

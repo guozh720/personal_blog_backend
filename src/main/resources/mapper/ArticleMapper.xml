@@ -7,4 +7,8 @@
         select * from article;
     </select>
 
+    <insert id="addArticle" parameterType="Article">
+        insert into article (id,author,title,create_time) values (null,#{author},#{title},{createTime})
+    </insert>
+
 </mapper>
