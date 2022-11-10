@@ -9,7 +9,6 @@ import com.guozh.personal_blog_backend.utils.SuccessResultDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("article")
@@ -29,9 +28,7 @@ public class ArticleController {
     }
 
     @PostMapping("/add")
-    public ServiceResultDO addArticle() {
-        String author = "郭大大";
-        String title = "id";
+    public ServiceResultDO addArticle(@RequestParam String author, @RequestParam String title) {
         boolean booleanInsert = articleService.addArticle(author, title);
         if (!booleanInsert) {
             return new FailureResultDO(ErrorEnum.UniqueKeyIsExist);
