@@ -7,8 +7,12 @@ import com.guozh.personal_blog_backend.utils.FailureResultDO;
 import com.guozh.personal_blog_backend.utils.ServiceResultDO;
 import com.guozh.personal_blog_backend.utils.SuccessResultDO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 @RestController
 @RequestMapping("article")
@@ -22,18 +26,19 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @GetMapping("/listAll")
+    @RequestMapping(value = "/listAll",method = RequestMethod.GET)
     public ServiceResultDO listAll() {
         return new SuccessResultDO(articleService.listAll());
     }
 
-    @PostMapping("/add")
-    public ServiceResultDO addArticle(@RequestParam String author, @RequestParam String title) {
-        boolean booleanInsert = articleService.addArticle(author, title);
-        if (!booleanInsert) {
-            return new FailureResultDO(ErrorEnum.UniqueKeyIsExist);
-        } else {
-            return new SuccessResultDO();
-        }
+@RequestMapping(value = "/add",method = RequestMethod.POST)
+public ServiceResultDO addArticle(@RequestBody Map map) {
+    System.out.println(map.get("content"));
+    boolean booleanInsert = articleService.addArticle("author", "title");
+    if (!booleanInsert) {
+        return new FailureResultDO(ErrorEnum.UniqueKeyIsExist);
+    } else {
+        return new SuccessResultDO();
     }
+}
 }
