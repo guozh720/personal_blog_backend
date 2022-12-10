@@ -10,5 +10,5 @@ public interface ArticleDao {
 
     List<Article> listAll();
 
-    boolean addArticle(Article article);
+    int addArticle(Article article);
 }

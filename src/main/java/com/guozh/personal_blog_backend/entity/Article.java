@@ -1,7 +1,6 @@
 package com.guozh.personal_blog_backend.entity;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Article {
     private Integer id;

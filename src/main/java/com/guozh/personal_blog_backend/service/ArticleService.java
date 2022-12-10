@@ -16,8 +16,9 @@ public class ArticleService {
         return articleDao.listAll();
     }
 
-    public boolean addArticle(String author, String title) {
+    public int addArticle(String author, String title) {
         Article article = new Article(author, title);
-        return articleDao.addArticle(article);
+        articleDao.addArticle(article);
+        return article.getId();
     }
 }
