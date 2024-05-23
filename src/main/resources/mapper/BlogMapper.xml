@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guozh.personal_blog_backend.dao.BlogDao">
+    <resultMap id="BlogResultMap" type="Blog">
+        <id property="id" column="id"/>
+        <result property="blogTitle" column="blog_title"/>
+        <result property="blogContent" column="blog_content"/>
+        <result property="blogStatus" column="blog_status"/>
+        <result property="coverImage" column="cover_image"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+    <select id="listAll" resultType="Blog">
+        select * from t_blog;
+    </select>
+    
+    <insert id="add" parameterType="Blog" >
+        insert into t_blog(blog_title, blog_content, cover_image,blog_status)
+        values (#{blogTitle}, #{blogContent}, #{coverImage},#{blogStatus});
+    </insert>
+    
+</mapper>
