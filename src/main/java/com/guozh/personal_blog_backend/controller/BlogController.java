@@ -2,6 +2,8 @@ package com.guozh.personal_blog_backend.controller;
 
 import com.guozh.personal_blog_backend.entity.Blog;
 import com.guozh.personal_blog_backend.service.BlogService;
+import com.guozh.personal_blog_backend.utils.ServiceResultDO;
+import com.guozh.personal_blog_backend.utils.SuccessResultDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +35,9 @@ public class BlogController {
 
 
     @GetMapping("/listAll")
-    public List<Blog> listAll() {
-        return blogService.listAll();
+    public ServiceResultDO listAll() {
+        List<Blog> blogs = blogService.listAll();
+        return new SuccessResultDO(blogs);
     }
 
     @PostMapping("/add")
